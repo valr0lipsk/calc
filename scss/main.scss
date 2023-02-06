@@ -151,7 +151,6 @@ textarea {
     background-color: var(--color-01);
     margin-bottom: 26px;
 
-
     .request__text {
       background-color: var(--color-00);
       border-radius: 29px 29px 0px 0px;
@@ -159,6 +158,8 @@ textarea {
     }
 
     .request__list {
+      min-height: 200px;
+
       li {
         font-weight: 500;
         font-size: 18px;

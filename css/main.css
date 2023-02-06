@@ -253,6 +253,9 @@ textarea {
   border-radius: 29px 29px 0px 0px;
   padding: 15px 25px;
 }
+.form__request .request__list {
+  min-height: 200px;
+}
 .form__request .request__list li {
   font-weight: 500;
   font-size: 18px;
