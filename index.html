@@ -53,10 +53,31 @@
 
       <div class="form__grid">
         <div class="form__buttons">
-          <button class="button">Кол-во комнат: 1</button>
-          <button class="button">Генеральная уборка</button>
-          <button class="button">Площадь: 50 кв. м.</button>
+          <button class="button button--active">Кол-во комнат: 1</button>
+          <button class="button button--active">Генеральная уборка</button>
+          <button class="button button--active">Площадь: 50 кв. м.</button>
           <button class="button">Уборка после ремонта</button>
+        </div>
+
+        <div class="form__block form__block--border form__request">
+          <div class="request__text">
+            <p class="block__title block__title--secondary">
+              Заявка:
+            </p>
+
+            <ul class="request__list">
+              <li>Генеральная уборка</li>
+              <li>1 ком. квартира</li>
+              <li>50 кв. м — 10 000 ₽</li>
+              <li>Уборка санузлов 1 шт — 800 ₽</li>
+              <li>Мытье окон 4 шт — 2400 ₽</li>
+              <li>Озонирование — 1500 ₽</li>
+            </ul>
+
+          </div>
+          <div class="request__total">
+            Итого: 14 700 ₽
+          </div>
         </div>
 
         <div class="form__block form__additional">
@@ -86,7 +107,7 @@
               </div>
             </div>
 
-            <div class="table__row table__row--button">
+            <div class="table__row table__row--button active">
               <div class="row__td">Уборка балкона с мытьем окон
               </div>
 
@@ -355,25 +376,6 @@
           </div>
         </div>
 
-        <div class="form__block form__block--border form__request">
-          <p class="block__title block__title--secondary">
-            Заявка:
-          </p>
-
-          <ul class="request__list">
-            <li>Генеральная уборка</li>
-            <li>1 ком. квартира</li>
-            <li>50 кв. м — 10 000 ₽</li>
-            <li>Уборка санузлов 1 шт — 800 ₽</li>
-            <li>Мытье окон 4 шт — 2400 ₽</li>
-            <li>Озонирование — 1500 ₽</li>
-          </ul>
-
-          <div class="request__total">
-            Итого: 14 700 ₽
-          </div>
-        </div>
-
         <div class="form__block form__block--border form__submit">
           <p class="block__title block__title--secondary">Данные:</p>
 
@@ -382,11 +384,11 @@
 
             <input type="tel" id="tel" placeholder="Номер телефона">
 
-            <input type="datetime" id="date">
+            <input type="datetime-local" id="date">
 
-            <textarea id="comment" cols="30" rows="10"></textarea>
+            <textarea id="comment" cols="30" rows="10" placeholder="Комментарии"></textarea>
 
-            <button type="submit">Заказать уборку</button>
+            <button class="button button--active" id="submit" type="submit">Заказать уборку</button>
           </form>
 
           <div class="submit__additional">
@@ -407,7 +409,7 @@
         <p>
           После оказания услуг по генеральной уборке или уборке после ремонта, Вы можете заключить договор с нами на
           регулярную,
-          поддерживающую уборку, полностью доверив нам заботу о чистоте Вашего дома.
+          <span>поддерживающую уборку</span>, полностью доверив нам заботу о чистоте Вашего дома.
         </p>
 
         <p>
