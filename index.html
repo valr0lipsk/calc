@@ -1,428 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>Калькулятор</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="/css/main.css">
-  <title>Калькулятор</title>
-</head>
-
-<body>
-  <div class="wrapper">
-    <div class="form">
-      <div class="form__title">
-        <h1>Рассчитать примерную стоимость уборки</h1>
-        <div class="tooltip">
-          <div class="tooltip__icon"></div>
-          <div class="tooltip__text">
-            <img src="">
-            <div class="text">
-              <p>
-                Стоимость уборки помещения без дополнительных услуг рассчитывается, исходя из цены в 200 ₽ за кв. м
-              </p>
-              <ul>
-                В уборку входит:
-                <li>
-                  обеспыливание стен и потолков;
-                </li>
-                <li>
-                  мытьё светильников, розеток, выключателей;
-                </li>
-                <li>
-                  мытьё наличников, дверных ручек и дверей с двух сторон (в том числе входная дверь);
-                </li>
-                <li>
-                  мытьё полов и плинтусов;
-                </li>
-                <li>
-                  мытьё продув батарей парогенератором;
-                </li>
-                <li>
-                  мытьё фартуков и рабочей зоны на кухне.
-                </li>
-              </ul>
+  <body>
+    <div class="wrapper">
+      <div class="form">
+        <div class="form__title">
+          <h1>Рассчитать примерную стоимость уборки</h1>
+          <div class="tooltip tooltip--left">
+            <div class="tooltip__icon"></div>
+            <div class="tooltip__text">
+              <img src="./img/question.svg" />
+              <div class="text">
+                <p>
+                  Стоимость уборки помещения без дополнительных услуг
+                  рассчитывается, исходя из цены в 200 ₽ за кв. м
+                </p>
+                <ul>
+                  В уборку входит:
+                  <li>обеспыливание стен и потолков;</li>
+                  <li>мытьё светильников, розеток, выключателей;</li>
+                  <li>
+                    мытьё наличников, дверных ручек и дверей с двух сторон
+                    (в том числе входная дверь);
+                  </li>
+                  <li>мытьё полов и плинтусов;</li>
+                  <li>мытьё продув батарей парогенератором;</li>
+                  <li>мытьё фартуков и рабочей зоны на кухне.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="form__grid">
-        <div class="form__buttons">
-          <button class="button button--active">Кол-во комнат: 1</button>
-          <button class="button button--active">Генеральная уборка</button>
-          <button class="button button--active">Площадь: 50 кв. м.</button>
-          <button class="button">Уборка после ремонта</button>
-        </div>
+        <div class="form__grid">
+          <div class="form__buttons">
+            <div class="button button--active button--increase">
+              Кол-во комнат:
+              <div>
+                <button id="inc-r">+</button>
+                <span id="rooms">1</span>
+                <button id="dec-r">-</button>
+              </div>
+            </div>
+            <button class="button button--active toggle">
+              Генеральная уборка
+            </button>
+            <button class="button button--active">Площадь: 50 кв. м.</button>
+            <button class="button toggle">Уборка после ремонта</button>
+          </div>
 
-        <div class="form__block form__block--border form__request">
-          <div class="request__text">
-            <p class="block__title block__title--secondary">
-              Заявка:
-            </p>
+          <div class="form__block form__block--border form__request">
+            <div class="request__text">
+              <p class="block__title block__title--secondary">Заявка:</p>
 
-            <ul class="request__list" id="request">
-              <li>Генеральная уборка</li>
-              <li>1 ком. квартира</li>
-              <li>50 кв. м — 10 000 ₽</li>
-              <!-- <li>Уборка санузлов 1 шт — 800 ₽</li>
+              <ul class="request__list" id="request">
+                <li id="first">Генеральная уборка</li>
+                <li><span id="totalR">1</span> ком. квартира</li>
+                <li>
+                  <span id="totalM"></span> кв. м — <span id="m"></span> ₽
+                </li>
+                <!-- <li>Уборка санузлов 1 шт — 800 ₽</li>
               <li>Мытье окон 4 шт — 2400 ₽</li>
               <li>Озонирование — 1500 ₽</li> -->
-            </ul>
-
+              </ul>
+            </div>
+            <div class="request__total">Итого: <span id="total"></span> ₽</div>
           </div>
-          <div class="request__total">
-            Итого: 14 700 ₽
+
+          <div class="form__block form__additional">
+            <p class="block__title block__title--main">
+              Дополнительные услуги:
+            </p>
+            <div class="additional__table">
+              <div
+                class="table__row table__row--counter"
+                data-item="0"
+                data-price="800"
+                data-count="0"
+              >
+                <div class="row__td">
+                  Уборка санузлов
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Мойка потолка, светильников, кафеля и всей сантехники
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">800 ₽ шт.</div>
+
+                <div class="row__td counter">
+                  <button>+</button>
+                  <span>0</span>
+                  <button>-</button>
+                </div>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="1"
+                data-price="2000"
+              >
+                <div class="row__td">Уборка балкона с мытьем окон</div>
+
+                <div class="row__td">+ 2000 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--counter"
+                data-item="2"
+                data-price="600"
+                data-count="0"
+              >
+                <div class="row__td">
+                  Мытьё окон
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Окна моются с двух сторон, с рамами и подоконниками
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">600 ₽ шт.</div>
+
+                <div class="row__td counter">
+                  <button>+</button>
+                  <span>0</span>
+                  <button>-</button>
+                </div>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="3"
+                data-price="0.2"
+              >
+                <div class="row__td">
+                  Удаление прикипевшей плёнки с оконных рам
+                </div>
+
+                <div class="row__td">+ 20%</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--counter"
+                data-item="4"
+                data-price="200"
+                data-count="0"
+              >
+                <div class="row__td">
+                  Мойка люстры
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Моются только те люстры, которые висят на потолке
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">200 ₽ шт.</div>
+
+                <div class="row__td counter">
+                  <button>+</button>
+                  <span>0</span>
+                  <button>-</button>
+                </div>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="5"
+                data-price="1000"
+              >
+                <div class="row__td">
+                  Мытьё кухонных ящиков
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Ящики моются снаружи и внутри с удалением жира
+                        с поверхностей
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">+ 1000 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="6"
+                data-price="500"
+              >
+                <div class="row__td">Мытьё вытяжки</div>
+
+                <div class="row__td">+ 500 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="7"
+                data-price="500"
+              >
+                <div class="row__td">Посудомоечная машина</div>
+
+                <div class="row__td">+ 500 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--counter"
+                data-item="8"
+                data-price="500"
+                data-count="0"
+              >
+                <div class="row__td">
+                  Мытьё холодильника внутри
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Удаление запахов, чистка, дезинфекция
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">500 ₽ шт.</div>
+
+                <div class="row__td counter">
+                  <button>+</button>
+                  <span>0</span>
+                  <button>-</button>
+                </div>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="9"
+                data-price="500"
+              >
+                <div class="row__td">Мытье духового шкафа</div>
+
+                <div class="row__td">+ 500 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="10"
+                data-price="300"
+              >
+                <div class="row__td">Мытьё микроволновой печи</div>
+
+                <div class="row__td">+ 300 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="11"
+                data-price="500"
+              >
+                <div class="row__td">
+                  Мытьё посуды
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Стоимость указана за одну полную раковину
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">+ 500 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="12"
+                data-price="1600"
+              >
+                <div class="row__td">
+                  Удаление шерсти дом. животных
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Шерсть удаляется с различных поверхностей, в том числе с
+                        мягкой мебели
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">+ 1600 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+
+              <div
+                class="table__row table__row--counter"
+                data-item="13"
+                data-price="2000"
+                data-count="0"
+              >
+                <div class="row__td">
+                  Химчистка мягкой мебели, ковров
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Стоимость указана за химчистку прямого дивана /
+                        коврового покрытия 2х3
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">2000 ₽ шт.</div>
+
+                <div class="row__td counter">
+                  <button>+</button>
+                  <span>0</span>
+                  <button>-</button>
+                </div>
+              </div>
+
+              <div
+                class="table__row table__row--counter"
+                data-item="14"
+                data-price="200"
+                data-count="0"
+              >
+                <div class="row__td">
+                  Снять/повесить шторы, тюль
+                  <div class="tooltip">
+                    <div class="tooltip__icon"></div>
+                    <div class="tooltip__text">
+                      <img src="./img/question.svg" />
+                      <div class="text">
+                        Указывайте общее количество штор/тюля
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row__td">200 ₽ шт.</div>
+
+                <div class="row__td counter">
+                  <button>+</button>
+                  <span>0</span>
+                  <button>-</button>
+                </div>
+              </div>
+
+              <div
+                class="table__row table__row--button"
+                data-item="15"
+                data-price="1500"
+              >
+                <div class="row__td">Озонирование</div>
+
+                <div class="row__td">+ 1500 ₽</div>
+
+                <button class="row__td button">Добавить</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form__block form__block--border form__submit">
+            <p class="block__title block__title--secondary">Данные:</p>
+
+            <form action="post">
+              <input type="text" id="name" placeholder="Имя" />
+
+              <input type="tel" id="tel" placeholder="Номер телефона" />
+
+              <input type="datetime-local" id="date" />
+
+              <textarea
+                id="comment"
+                cols="30"
+                rows="10"
+                placeholder="Комментарии"
+              ></textarea>
+
+              <button class="button button--active" id="submit" type="submit">
+                Заказать уборку
+              </button>
+            </form>
+
+            <div class="submit__additional">
+              Нажимая на кнопку, вы соглашаетесь с
+              <a>Политикой конфиденциальности</a>
+            </div>
           </div>
         </div>
 
-        <div class="form__block form__additional">
-          <p class="block__title block__title--main">
-            Дополнительные услуги:
+        <div class="form__block form__info">
+          <p class="block__title block__title--tertiary">
+            Обращаем Ваше внимание:
           </p>
-          <div class="additional__table">
-            <div class="table__row table__row--counter">
-              <div class="row__td">Уборка санузлов
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Мойка потолка, светильников, кафеля и всей сантехники
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="row__td">800 ₽ шт.</div>
+          <p>
+            Указанные цены на уборку — ориентировочные, точно определить
+            стоимость и сроки выполнения работ можно после осмотра объекта нашим
+            менеджером или при выезде бригады перед началом работ.
+          </p>
 
-              <div class="row__td counter">
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
-              </div>
-            </div>
+          <p>
+            После оказания услуг по генеральной уборке или уборке после ремонта,
+            Вы можете заключить договор с нами на регулярную,
+            <span>поддерживающую уборку</span>, полностью доверив нам заботу о
+            чистоте Вашего дома.
+          </p>
 
-            <div class="table__row table__row--button active">
-              <div class="row__td">Уборка балкона с мытьем окон
-              </div>
-
-              <div class="row__td">+ 2000 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--counter">
-              <div class="row__td">Мытьё окон
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Окна моются с двух сторон, с рамами и подоконниками
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">600 ₽ шт.</div>
-
-              <div class="row__td counter">
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
-              </div>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Удаление прикипевшей плёнки с оконных рам
-              </div>
-
-              <div class="row__td">+ 20%</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--counter">
-              <div class="row__td">Мойка люстры
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Моются только те люстры, которые висят на потолке
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">200 ₽ шт.</div>
-
-              <div class="row__td counter">
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
-              </div>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Мытьё кухонных ящиков
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Ящики моются снаружи и внутри с удалением жира с поверхностей
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">+ 1000 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Мытьё вытяжки
-              </div>
-
-              <div class="row__td">+ 500 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Посудомоечная машина
-              </div>
-
-              <div class="row__td">+ 500 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--counter">
-              <div class="row__td">Мытьё холодильника внутри
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Удаление запахов, чистка, дезинфекция
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">500 ₽ шт.</div>
-
-              <div class="row__td counter">
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
-              </div>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Мытье духового шкафа
-              </div>
-
-              <div class="row__td">+ 500 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Мытьё микроволновой печи
-              </div>
-
-              <div class="row__td">+ 300 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Мытьё посуды
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Стоимость указана за одну полную раковину
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">+ 500 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Удаление шерсти дом. животных
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Шерсть удаляется с различных поверхностей, в том числе с мягкой мебели
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">+ 1600 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--counter">
-              <div class="row__td">Химчистка мягкой мебели, ковров
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Стоимость указана за химчистку прямого дивана / коврового покрытия 2х3
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">2000 ₽ шт.</div>
-
-              <div class="row__td counter">
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
-              </div>
-            </div>
-
-            <div class="table__row table__row--counter">
-              <div class="row__td">Снять/повесить шторы, тюль
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Указывайте общее количество штор/тюля
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">200 ₽ шт.</div>
-
-              <div class="row__td counter">
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
-              </div>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Удаление неприятных запахов
-                <div class="tooltip">
-                  <div class="tooltip__icon"></div>
-                  <div class="tooltip__text">
-                    <img src="">
-                    <div class="text">
-                      Обработка «сухим туманом»
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row__td">+ 2000 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-
-            <div class="table__row table__row--button">
-              <div class="row__td">Озонирование
-              </div>
-
-              <div class="row__td">+ 1500 ₽</div>
-
-              <button class="row__td button">
-                Добавить
-              </button>
-            </div>
-          </div>
+          <p>
+            Выезд менеджера для оценки объекта, в пределах г. Калининграда —
+            бесплатно. Стоимость выезда за пределы города Калининград —
+            40 руб./км
+          </p>
         </div>
-
-        <div class="form__block form__block--border form__submit">
-          <p class="block__title block__title--secondary">Данные:</p>
-
-          <form action="post">
-            <input type="text" id="name" placeholder="Имя">
-
-            <input type="tel" id="tel" placeholder="Номер телефона">
-
-            <input type="datetime-local" id="date">
-
-            <textarea id="comment" cols="30" rows="10" placeholder="Комментарии"></textarea>
-
-            <button class="button button--active" id="submit" type="submit">Заказать уборку</button>
-          </form>
-
-          <div class="submit__additional">
-            Нажимая на кнопку, вы соглашаетесь с <a>Политикой конфиденциальности</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="form__block form__info">
-        <p class="block__title block__title--tertiary">Обращаем Ваше внимание: </p>
-
-        <p>
-          Указанные цены на уборку — ориентировочные, точно определить стоимость и сроки выполнения работ можно после
-          осмотра
-          объекта нашим менеджером или при выезде бригады перед началом работ.
-        </p>
-
-        <p>
-          После оказания услуг по генеральной уборке или уборке после ремонта, Вы можете заключить договор с нами на
-          регулярную,
-          <span>поддерживающую уборку</span>, полностью доверив нам заботу о чистоте Вашего дома.
-        </p>
-
-        <p>
-          Выезд менеджера для оценки объекта, в пределах г. Калининграда — бесплатно. Стоимость выезда за пределы города
-          Калининград — 40 руб./км
-        </p>
       </div>
     </div>
-  </div>
-</body>
-<script src="./js/index.js"></script>
-
+  </body>
+  <script src="./js/index.js"></script>
 </html>
