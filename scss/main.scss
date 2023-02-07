@@ -45,8 +45,8 @@ textarea {
 
   &__icon {
     background: url("../img/question.svg") center no-repeat;
-    height: 100%;
-    width: 100%;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
   }
 
@@ -59,16 +59,18 @@ textarea {
     position: absolute;
     background-color: #d9d9d9;
     width: max-content;
-    max-width: 632px;
+    max-width: 432px;
     z-index: 99;
     padding: 18px 62px;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
     border-radius: 5px;
+    color: #000;
 
     .tooltip--left & {
-      right: -1000%;
+      right: -0%;
+      max-width: 632px;
     }
 
     ul {
@@ -143,6 +145,7 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 4px;
 
   &__title {
     display: flex;
@@ -196,7 +199,7 @@ textarea {
     width: 66%;
     max-height: 152px;
 
-    padding: 0px 43px 43px 43px;
+    padding: 0px 43px 0 43px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -375,6 +378,217 @@ textarea {
 
     span {
       font-weight: 700;
+    }
+  }
+}
+
+@media (max-width: 971px) {
+  h1 {
+    text-align: center;
+  }
+
+  .form__buttons {
+    max-height: 185px;
+  }
+}
+
+@media (max-width: 700px) {
+  .form__title h1 {
+    font-size: 28px;
+    line-height: 35px;
+    margin: 0;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="datetime-local"],
+  textarea {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .button {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .tooltip {
+    height: 22px;
+    width: 22px;
+    margin-left: 5px;
+
+    &__icon {
+      height: 22px;
+      width: 22px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 22px;
+      padding: 18px 32px;
+      max-width: 300px;
+
+      .tooltip--left & {
+        max-width: 400px !important;
+      }
+
+      img {
+        position: absolute;
+        left: 15px;
+        width: 7px;
+        height: 19px;
+      }
+    }
+  }
+
+  .form {
+    padding: 10px;
+
+    &__title {
+      margin-bottom: 30px;
+    }
+
+    &__info {
+      font-size: 17px;
+      line-height: 26px;
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+
+    &__block .block__title {
+      &--main {
+        font-size: 28px;
+        line-height: 35px;
+      }
+
+      &--secondary {
+        font-size: 20px !important;
+        line-height: 25px !important;
+      }
+
+      &--tertiary {
+        font-size: 20px !important;
+        line-height: 25px !important;
+        margin-bottom: 13px !important;
+      }
+    }
+
+    &__grid {
+      justify-content: center;
+    }
+
+    &__buttons {
+      width: 100%;
+      padding: 0;
+    }
+
+    &__request {
+      width: 70%;
+      margin: 20px 0;
+
+      .request__list {
+        min-height: 100px;
+        max-height: 200px;
+
+        li {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+
+      .request__total {
+        font-size: 18px;
+        line-height: 23px;
+      }
+    }
+
+    &__additional {
+      top: 0;
+      width: 100%;
+      margin-bottom: 20px;
+
+      .additional__table .table__row {
+        padding: 10px 15px;
+        .row__td {
+          font-size: 15px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    &__submit {
+      width: 100%;
+      margin: 0 0 20px 0;
+
+      .submit__additional {
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+      }
+
+      form textarea {
+        height: 100px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .form__buttons {
+    max-height: none;
+    justify-content: center;
+
+    .button {
+      width: 70%;
+      margin-bottom: 16px;
+
+      &:nth-child(2) {
+        order: 1;
+      }
+
+      &:nth-child(4) {
+        order: 2;
+      }
+    }
+  }
+
+  .form .form__block .block__title--main {
+    font-size: 24px;
+    line-height: 31px;
+    margin-bottom: 17px;
+  }
+
+  .tooltip {
+    &--left {
+      .tooltip__text {
+        max-width: 300px !important;
+      }
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 20px;
+      max-width: 200px;
+
+      ul,
+      li:first-of-type {
+        margin-top: 7px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .form__request {
+    width: 80%;
+  }
+
+  .form__buttons {
+    .button {
+      width: 80%;
     }
   }
 }
