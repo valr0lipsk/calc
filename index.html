@@ -64,7 +64,11 @@
             <button class="button button--active toggle">
               Генеральная уборка
             </button>
-            <button class="button button--active">Площадь: 50 кв. м.</button>
+            <div class="button button--active button--area">
+              Площадь:
+              <input type="number" id="area" value="50" step="5" />
+              кв. м.
+            </div>
             <button class="button toggle">Уборка после ремонта</button>
           </div>
 
@@ -78,9 +82,6 @@
                 <li>
                   <span id="totalM"></span> кв. м — <span id="m"></span> ₽
                 </li>
-                <!-- <li>Уборка санузлов 1 шт — 800 ₽</li>
-              <li>Мытье окон 4 шт — 2400 ₽</li>
-              <li>Озонирование — 1500 ₽</li> -->
               </ul>
             </div>
             <div class="request__total">Итого: <span id="total"></span> ₽</div>
@@ -422,12 +423,17 @@
           <div class="form__block form__block--border form__submit">
             <p class="block__title block__title--secondary">Данные:</p>
 
-            <form action="post">
-              <input type="text" id="name" placeholder="Имя" />
+            <form id="form">
+              <input type="text" id="name" placeholder="Имя" required />
 
-              <input type="tel" id="tel" placeholder="Номер телефона" />
+              <input
+                type="tel"
+                id="tel"
+                placeholder="Номер телефона"
+                required
+              />
 
-              <input type="datetime-local" id="date" />
+              <input type="datetime-local" id="date" required />
 
               <textarea
                 id="comment"
@@ -436,9 +442,12 @@
                 placeholder="Комментарии"
               ></textarea>
 
-              <button class="button button--active" id="submit" type="submit">
-                Заказать уборку
-              </button>
+              <input
+                class="button button--active"
+                id="submit"
+                type="submit"
+                value="Заказать уборку"
+              />
             </form>
 
             <div class="submit__additional">

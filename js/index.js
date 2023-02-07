@@ -30,22 +30,23 @@ const prices = {
 
 $(document).ready(function () {
   const request = {
-    type: 0,
+    type: types[0],
     rooms: 1,
-    area: 50.1,
+    area: 50,
+    items: [],
   };
 
-  let price;
-  if (request.area >= 100) price = request.area * prices[2];
-  else if (request.area >= 50) price = request.area * prices[1];
-  else if (request.area >= 0) price = request.area * prices[0];
-  else price = 0;
-  let total = price;
+  let curPrice;
+  if (request.area >= 100) curPrice = request.area * prices[2];
+  else if (request.area >= 50) curPrice = request.area * prices[1];
+  else if (request.area >= 0) curPrice = request.area * prices[0];
+  else curPrice = 0;
+  let total = curPrice;
 
   $("#total").text(total);
   $("#totalR").text(request.rooms);
   $("#totalM").text(request.area);
-  $("#m").text(price);
+  $("#m").text(curPrice);
 
   const buttons = $(".toggle");
   Array.prototype.forEach.call(buttons, function (button) {
@@ -57,6 +58,8 @@ $(document).ready(function () {
       });
       button.classList.add("button--active");
       addItemToRequest(button.innerText);
+      request.type =
+        button.innerText === "Генеральная уборка" ? types[0] : types[1];
     });
   });
 
@@ -119,6 +122,28 @@ $(document).ready(function () {
     }
   });
 
+  $("#area").on("input", function () {
+    request.area = parseFloat($(this).val());
+    if (request.area) {
+      $("#totalM").text(request.area);
+      let price;
+      if (request.area >= 100) price = request.area * prices[2];
+      else if (request.area >= 50) price = request.area * prices[1];
+      else if (request.area >= 0) price = request.area * prices[0];
+      else price = 0;
+      total = total - curPrice + price;
+      curPrice = price;
+      $("#m").text(price);
+      $("#total").text(total);
+    }
+  });
+
+  $("#form").on("submit", function (e) {
+    e.preventDefault();
+    console.log(request);
+    // что-то делать с request
+  });
+
   function addItemToRequest(item, price, count) {
     const name = items[item];
     if (name && price) {
@@ -127,9 +152,12 @@ $(document).ready(function () {
         $("#request").append(
           `<li id="${item}">${name} <span id="${item}-s">${count}</span> шт - <span id="${item}-p">${price}</span> ₽</li>`
         );
+        request.items.push({ name: items[item], price: price, count: count });
       } else if (count && $(`#${item}`)) {
         $(`#${item}-s`).text(count);
         $(`#${item}-p`).text(price * count);
+        const i = request.items.findIndex((e) => e.name === items[item]);
+        request.items[i].count = count;
       } else if (count === 0) {
         removeFromRequest(item);
       } else {
@@ -138,6 +166,7 @@ $(document).ready(function () {
         }
         $("#request").append(`<li id="${item}">${name}  - ${price} ₽</li>`);
         total += +price;
+        request.items.push({ name: items[item], price: price });
         $("#total").text(total);
       }
     } else {
@@ -148,6 +177,7 @@ $(document).ready(function () {
 
   function removeFromRequest(item) {
     $(`#${item}`).remove();
+    request.items = request.items.filter((e) => e.name !== items[item]);
   }
 });
 

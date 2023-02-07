@@ -199,6 +199,42 @@ textarea {
   color: var(--color-00);
   background-color: var(--color-01);
 }
+.button--area {
+  width: 48%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.button--area input {
+  width: 30%;
+  min-width: 15px;
+  border: 2px solid var(--color-01);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+}
+.button--area input::-webkit-input-placeholder {
+  color: #000000;
+}
+.button--area input::-moz-placeholder {
+  color: #000000;
+}
+.button--area input:-ms-input-placeholder {
+  color: #000000;
+}
+.button--area input::-ms-input-placeholder {
+  color: #000000;
+}
+.button--area input::placeholder {
+  color: #000000;
+}
 .button--increase {
   width: 48%;
   display: -webkit-box;

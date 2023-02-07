@@ -109,6 +109,27 @@ textarea {
     background-color: var(--color-01);
   }
 
+  &--area {
+    width: 48%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      width: 30%;
+      min-width: 15px;
+      border: 2px solid var(--color-01);
+      border-radius: 5px;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 22px;
+
+      &::placeholder {
+        color: #000000;
+      }
+    }
+  }
+
   &--increase {
     width: 48%;
     display: flex;
