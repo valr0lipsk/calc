@@ -507,8 +507,11 @@ textarea {
     }
 
     &__request {
-      width: 70%;
-      margin: 20px 0;
+      // width: 70%;
+      // margin: 20px 0;
+      order: 1;
+      margin-top: 0;
+      width: 100%;
 
       .request__list {
         min-height: 100px;
@@ -543,6 +546,7 @@ textarea {
     &__submit {
       width: 100%;
       margin: 0 0 20px 0;
+      order: 2;
 
       .submit__additional {
         font-size: 16px;
@@ -604,7 +608,7 @@ textarea {
 
 @media (max-width: 450px) {
   .form__request {
-    width: 80%;
+    // width: 80%;
   }
 
   .form__buttons {

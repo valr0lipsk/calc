@@ -611,8 +611,11 @@ textarea {
     padding: 0;
   }
   .form__request {
-    width: 70%;
-    margin: 20px 0;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin-top: 0;
+    width: 100%;
   }
   .form__request .request__list {
     min-height: 100px;
@@ -641,6 +644,9 @@ textarea {
   .form__submit {
     width: 100%;
     margin: 0 0 20px 0;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
   }
   .form__submit .submit__additional {
     font-size: 16px;
@@ -691,9 +697,6 @@ textarea {
   }
 }
 @media (max-width: 450px) {
-  .form__request {
-    width: 80%;
-  }
   .form__buttons .button {
     width: 80%;
   }
