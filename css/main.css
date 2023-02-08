@@ -83,20 +83,6 @@ h6 {
   font-weight: 400;
 }
 
-:root {
-  --color-00: #fff;
-  --color-01: #098dd8;
-  --color-02: #d9d9d9;
-}
-
-html {
-  font-family: "Inter", sans-serif;
-}
-html > * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 input[type=text],
 input[type=tel],
 input[type=datetime-local],
@@ -275,6 +261,9 @@ textarea {
 }
 
 .form {
+  --color-00: #fff;
+  --color-01: #098dd8;
+  --color-02: #d9d9d9;
   margin: auto;
   max-width: 1112px;
   display: -webkit-box;
@@ -288,6 +277,11 @@ textarea {
       -ms-flex-align: center;
           align-items: center;
   padding: 4px;
+  font-family: "Inter", sans-serif;
+}
+.form > * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .form__title {
   display: -webkit-box;
